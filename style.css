@@ -1,0 +1,145 @@
+.listCart{
+    margin-right: 5px;
+    position: relative;
+}
+#notification .bi{
+    font-size: 0.7em;
+    color: #FF6F61;
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+    
+}
+
+
+.cart.dropdown-menu[data-bs-popper]{
+    right: 0;
+}
+
+.dropdown-toggle::after{
+    display: none;
+}
+.cart li{
+    display: flex;
+    justify-content: space-between;
+}
+.cart p{
+    font-size: 0.8em;
+}
+.imgCart{
+    width: 30px;
+}
+
+.btnRemove{
+    right: 0;
+    width: 30px;
+    height: 30px;
+    border: none;
+}
+
+main{
+    background-color: #E0E0E0;
+}
+
+#sectionSearch{
+    padding: 30px;
+    background-color: rgba(39, 39, 39, 0.392);
+
+}
+
+#sectionSearch input{
+    width: 250px;
+    text-align: center;
+
+}
+#sectionSearch input:hover{
+    background-color: rgb(227, 223, 219);
+}
+
+#sectionSearch input:focus-visible{
+    outline-style: none;
+}
+
+button, input{
+    border: 0.5px solid rgb(92, 92, 92);
+    border-radius: 20px;
+    background-color: #fff;
+}
+
+
+#bookSection div.row{
+    background-color: #fff;
+    box-shadow: black;
+
+}
+
+
+
+.cardHeader{
+    padding: 0;
+    margin-bottom: 10px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.146) 0px 7px 13px -3px, rgba(0, 0, 0, 0.007) 0px -3px 0px inset;
+}
+.card img{
+    height: 250px;
+    object-fit: contain;
+}
+.card{
+    border: none;
+}
+
+
+.card-title{
+    font-size: 0.8em;
+    color: #212121;
+
+}
+
+.card-text{
+    font-size: 0.7em;
+}
+
+.price{
+    font-size: 0.7em;
+    color: rgb(168, 23, 23);
+}
+
+p, .card-title{
+    margin: 0;
+}
+
+.card-footer, .card-body{
+    padding: 0;
+    background-color: transparent;
+    border: none;
+}
+
+.card-body{
+    padding-bottom: 10px;
+}
+.card button{
+    font-size: 0.8em;
+    border: none;
+    cursor: pointer;
+}
+
+.skipButton{
+    background-color: #FF6F61;
+    color: #fff;
+}
+
+
+.price{
+    display: flex;
+    align-items: center;
+}
+
+
+
+footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px;
+    border-top: 0.5px solid rgb(214, 214, 214);
+}
