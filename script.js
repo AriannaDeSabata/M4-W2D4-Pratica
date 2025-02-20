@@ -32,12 +32,12 @@ function renderBooks(list){
     row.append(...listCards)
 }
 
-function createCardBook({category, img, price, title}){
+function createCardBook({category, img, price, title, asin}){
 
-  let card = document.createElement("div")
+  let card = createDiv()
   card.classList.add("card", "col-6", "col-md-3","col-lg-2","my-4")
 
-  let cardHeader = document.createElement("div")
+  let cardHeader = createDiv()
   cardHeader .classList.add("cardHeader")
 
   let imgCard = document.createElement("img")
@@ -45,7 +45,7 @@ function createCardBook({category, img, price, title}){
   imgCard.setAttribute("src", `${img}`)
   imgCard.setAttribute("alt", "image book")
   
-  let cardBody = document.createElement("div")
+  let cardBody = createDiv()
   cardBody.classList.add("card-body")
 
   let titleCard = document.createElement("h6")
@@ -56,31 +56,42 @@ function createCardBook({category, img, price, title}){
   categoryCard.innerText = category
   categoryCard.classList.add("card-text")
 
+  let details = document.createElement("a")
+  details.innerText ="Details"
+  details.setAttribute("href", `details.html?q=${asin}`)
+  details.classList.add("card-text")
+
+
   let priceCard = document.createElement("span")
   priceCard.innerText = price + " €"
   priceCard.classList.add("price")
 
   
-  let cardFooter = document.createElement("div")
+  let cardFooter = createDiv()
   cardFooter .classList.add("card-footer", "d-flex", "justify-content-between", "align-items-end")
   cardFooter.classList.add("d-flex")
 
-let contButton = document.createElement("div")
+  let contButton = createDiv()
 
   let cartButton = document.createElement("button")
   cartButton.classList.add("cartButton")
   cartButton.innerHTML = "<i class='bi bi-cart'></i>"
   cartButton.addEventListener("click", ()=>{
-    addBookCart(title, img, price)}
+    addBookCart(title, img, price)
+    notification.classList.remove("d-none")}
+
   )
 
   let skipButton = document.createElement("button")
   skipButton.classList.add("skipButton")
   skipButton.innerText ="SKIP"
+  skipButton.addEventListener("click", ()=>{
+    card.remove()
+  })
 
 
   cardHeader.appendChild(imgCard)
-  cardBody.append(titleCard, categoryCard)
+  cardBody.append(titleCard, categoryCard, details)
   contButton.append( cartButton, skipButton)
   cardFooter.append(priceCard, contButton)
   card.append(cardHeader, cardBody, cardFooter)
@@ -89,8 +100,13 @@ let contButton = document.createElement("div")
   return card
 }
 
+function createDiv(){
+   return document.createElement("div")
+}
+
 
 function searchBook(){
+
   let searchValue = inputSearch.value
   let val = searchValue.toLowerCase()
   const filterBook = allBook.filter((list) => {
@@ -117,25 +133,23 @@ function searchBook(){
 let cartItems = []
 
 function addBookCart(title, img, price){
-  console.log(title, img, price)
   
   if(cartItems.includes(title)){
     alert("This book is already in your cart")
     return
   }
   cartItems.push(title)
-
+  
   let liCart = document.createElement("li")
-  liCart.classList.add("dropdown-item")
 
-  let cont = document.createElement("div")
+  let cont = createDiv()
   cont.classList.add("d-flex", "gap-2")
 
   let imgCart = document.createElement("img")
   imgCart.setAttribute("src", `${img}`)
   imgCart.classList.add("imgCart")
   
-   let contnInfoBook = document.createElement("div")
+   let contnInfoBook = createDiv()
    contnInfoBook.classList.add("d-flex", "flex-column", "justify-content-center")
 
   let  titleCart = document.createElement("p")
@@ -149,29 +163,28 @@ function addBookCart(title, img, price){
   btnRemove.innerHTML= "<i class='bi bi-x'></i>"
   btnRemove.classList.add("btnRemove")
   btnRemove.addEventListener("click", ()=>{
-    liCart.remove()
+    liCart.remove() 
+    currentTotal = parseFloat(totalCart.innerText)
+    totalCart.innerText = (currentTotal - parseFloat(price)).toFixed(2)
   })
 
 
   contnInfoBook.append( titleCart, priceCart)
   cont.append(imgCart, contnInfoBook )
   liCart.append(cont, btnRemove)
-  console.log(liCart)
   cart.prepend(liCart)
 
   let currentTotal = parseFloat(totalCart.innerText)
   totalCart.innerText = (currentTotal + parseFloat(price)).toFixed(2)
 
-  toggleNotification()
 
 }
 
-function toggleNotification() {
-  if (cartItems.length > 0) {
-    notification.classList.remove("d-none");
-  } else {
-    notification.classList.add("d-none");
-  }
+
+
+
+function showCart(){
+  cart.classList.toggle("d-none")
 }
 
 

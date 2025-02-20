@@ -10,19 +10,18 @@
 </head>
 <body>
 
-  <nav class="navbar bg-body-tertiary px-3 fixed-top">
+  <nav class="navbar bg-body-tertiary px-3">
     <div class="container-fluid">
 
       <a class="navbar-brand" href="#">ReadSphere</a>
 
       <div>
 
-        <button class="listCart" onclick="showCart()">
+        <button class="listCart dropdown-toggle" data-bs-toggle="dropdown" >
           <span id="notification"><i class="bi bi-bell-fill d-none"></i></span>
-          <i class='bi bi-cart'></i>
-        </button>
-        <ul class="cart d-none p-4" id="cartListBooks">
-          <p class="text-end  ">
+          <i class='bi bi-cart'></i></button>
+        <ul class="dropdown-menu cart" id="cartListBooks">
+          <p class="dropdown-item  text-end  ">
             total <span id="totalCart"> 0</span> €
           </p>
         </ul>
@@ -69,28 +68,14 @@
     </div>
   </nav>
 
-
-
     <main>
-          <div id="sectionSearch" class="">
-            <form action="" class="d-flex justify-content-center ">
-              <input type="text" id="inputSearch" placeholder="Search">
-            </form>
-          </div>
-    
-          <div id="bookSection" class="mx-4 mx-xl-5" > 
-              <div class="row gx-3 p-3 px-xl-5 gx-xl-5" id="rowBooks">
+      <div class="row mx-5 p-5 d-flex justify-content-center" id="detailsBook">
+      </div>
+    </main>  
 
-                <div class="d-flex justify-content-center m-5">
-                  <div class="spinner-border" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                  </div>
-                </div>
 
-                </div>
-              </div>
-          </div>
-    </main>
+
+
 
     <footer>
       <h4>ReadSphere</h4>
@@ -103,10 +88,8 @@
 
 
 
-
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+  <script src="details.js"></script>
 </body>
 </html>
